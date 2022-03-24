@@ -1,0 +1,22 @@
+{
+  "name": "udemy-typescript-node-cleancode",
+  "version": "1.0.0",
+  "description": "Code of the udemy course https://www.udemy.com/course/programador-autodidacta-nodejs-typescript-tdd-clean-code",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonioMartinezFernandez/udemy-typescript-node-cleancode.git"
+  },
+  "author": "Antonio Martínez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonioMartinezFernandez/udemy-typescript-node-cleancode/issues"
+  },
+  "homepage": "https://github.com/AntonioMartinezFernandez/udemy-typescript-node-cleancode#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.1"
+  }
+}
