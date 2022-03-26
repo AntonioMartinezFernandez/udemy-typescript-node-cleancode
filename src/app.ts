@@ -5,3 +5,4 @@ function test(): number {
 const number: number = test();
 
 console.log(number)
+//
