@@ -1,7 +1,7 @@
-function test(): number {
+function testing(): number {
   return 0;
 }
 
-const number: number = test();
+const number: number = testing();
 
 console.log(number);
