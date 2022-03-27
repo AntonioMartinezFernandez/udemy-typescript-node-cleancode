@@ -1,7 +1,16 @@
-function testing(): number {
-  return 0;
-}
+import Express from 'express';
+import cron from 'node-cron';
 
-const number: number = testing();
+cron.schedule('0,30 * * * * *', () => {
+  console.log('Cronjob running every 30 seconds');
+});
 
-console.log(number);
+const app = Express();
+
+app.get('/', (req: Express.Request, res: Express.Response) => {
+  res.send('Hi!');
+});
+
+app.listen(3000, () => {
+  console.log('Server listen on port 3000');
+});
