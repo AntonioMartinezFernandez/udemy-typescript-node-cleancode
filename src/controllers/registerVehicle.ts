@@ -1,30 +1,24 @@
-export class RegisterVehicle {
-  private readonly name: string;
-  private readonly model: string;
-  private readonly year: number;
+import { vehicle } from '../entities/vehicle';
 
-  constructor(httpRequest: any) {
-    this.name = httpRequest.name;
-    this.model = httpRequest.model;
-    this.year = httpRequest.year;
-  }
+export class RegisterVehicle {
+  constructor(private readonly vehicle: vehicle) {}
 
   handler() {
-    if (!this.name) {
+    if (!this.vehicle.brand || this.vehicle.brand === '') {
       return {
         statusCode: 400,
-        error: 'name does not exist',
+        error: 'brand does not exist',
       };
     }
 
-    if (!this.model) {
+    if (!this.vehicle.model || this.vehicle.model === '') {
       return {
         statusCode: 400,
         error: 'model does not exist',
       };
     }
 
-    if (!this.year) {
+    if (!this.vehicle.year || this.vehicle.year < 1000) {
       return {
         statusCode: 400,
         error: 'year does not exist',
@@ -33,9 +27,9 @@ export class RegisterVehicle {
 
     return {
       statusCode: 200,
-      name: this.name,
-      model: this.model,
-      year: this.year,
+      brand: this.vehicle.brand,
+      model: this.vehicle.model,
+      year: this.vehicle.year,
     };
   }
 }
