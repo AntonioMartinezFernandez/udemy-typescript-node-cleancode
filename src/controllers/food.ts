@@ -1,14 +1,13 @@
+import IFood from '@/entities/Food';
+
 export class Food {
-  constructor(
-    private readonly name: string,
-    private readonly description: string,
-  ) {}
+  constructor(private readonly food: IFood) {}
 
   getName(): string {
-    return this.name;
+    return this.food.name;
   }
 
   getDescription(): string {
-    return this.description;
+    return this.food.description;
   }
 }

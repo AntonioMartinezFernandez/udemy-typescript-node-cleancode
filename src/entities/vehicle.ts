@@ -1,4 +1,4 @@
-export type vehicle = {
+export type TVehicle = {
   brand: string;
   model: string;
   year: number;

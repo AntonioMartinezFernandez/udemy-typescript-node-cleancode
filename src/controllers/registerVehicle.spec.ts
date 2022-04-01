@@ -1,4 +1,4 @@
-import { RegisterVehicle } from './registerVehicle';
+import { RegisterVehicle } from './RegisterVehicle';
 
 describe('RegisterVehicle Class', () => {
   it('if the brand does not exist return 400', () => {
@@ -16,7 +16,7 @@ describe('RegisterVehicle Class', () => {
   });
 
   it('if the year does not exist return 400', () => {
-    const httpRequest = { brand: 'Audi', model: 'TT', year: 0 };
+    const httpRequest = { brand: 'Audi', model: 'TT', year: 11 };
     const sut = new RegisterVehicle(httpRequest);
 
     expect(sut.handler().statusCode).toEqual(400);

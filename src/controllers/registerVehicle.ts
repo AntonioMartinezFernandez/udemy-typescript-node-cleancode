@@ -1,7 +1,7 @@
-import { vehicle } from '../entities/vehicle';
+import { TVehicle } from '../entities/Vehicle';
 
 export class RegisterVehicle {
-  constructor(private readonly vehicle: vehicle) {}
+  constructor(private readonly vehicle: TVehicle) {}
 
   handler() {
     if (!this.vehicle.brand || this.vehicle.brand === '') {
