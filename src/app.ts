@@ -8,7 +8,7 @@ cron.schedule('0,30 * * * * *', () => {
 const app = Express();
 
 app.get('/', (req: Express.Request, res: Express.Response) => {
-  res.send('Hi!');
+  console.log(res.send('Hello Express!'));
 });
 
 app.listen(3000, () => {
