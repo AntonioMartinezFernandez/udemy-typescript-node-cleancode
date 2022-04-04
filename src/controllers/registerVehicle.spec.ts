@@ -1,3 +1,4 @@
+import { MissingFormalParameter } from '../errors/MissingFormalParameter';
 import { RegisterVehicle } from './RegisterVehicle';
 
 describe('RegisterVehicle Class', () => {
@@ -6,7 +7,7 @@ describe('RegisterVehicle Class', () => {
     const sut = new RegisterVehicle(httpRequest);
 
     expect(sut.handler().statusCode).toEqual(400);
-    expect(sut.handler().error).toEqual(new Error('brand is invalid'));
+    expect(sut.handler().error).toEqual(new MissingFormalParameter('brand'));
   });
 
   it('if the model does not exist return 400', () => {
@@ -14,7 +15,7 @@ describe('RegisterVehicle Class', () => {
     const sut = new RegisterVehicle(httpRequest);
 
     expect(sut.handler().statusCode).toEqual(400);
-    expect(sut.handler().error).toEqual(new Error('model is invalid'));
+    expect(sut.handler().error).toEqual(new MissingFormalParameter('model'));
   });
 
   it('if the year does not exist return 400', () => {
@@ -22,7 +23,7 @@ describe('RegisterVehicle Class', () => {
     const sut = new RegisterVehicle(httpRequest);
 
     expect(sut.handler().statusCode).toEqual(400);
-    expect(sut.handler().error).toEqual(new Error('year is invalid'));
+    expect(sut.handler().error).toEqual(new MissingFormalParameter('year'));
   });
 
   it('if the brand and model exist return 200, brand, model and year', () => {

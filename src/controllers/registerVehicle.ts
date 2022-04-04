@@ -1,3 +1,4 @@
+import { MissingFormalParameter } from '../errors/MissingFormalParameter';
 import { IHttpRequest, IHttpResponse } from '@/interfaces/IHttp';
 import { TVehicle } from '../entities/Vehicle';
 
@@ -11,7 +12,7 @@ export class RegisterVehicle {
       if (!this.vehicle.body[property] || this.vehicle.body[property] === '') {
         return {
           statusCode: 400,
-          error: new Error(`${property} is invalid`),
+          error: new MissingFormalParameter(`${property}`),
         };
       }
     }
