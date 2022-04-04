@@ -5,26 +5,15 @@ export class RegisterVehicle {
   constructor(private readonly vehicle: IHttpRequest) {}
 
   handler(vehicle: TVehicle = this.vehicle.body): IHttpResponse {
-    console.log(vehicle);
-    if (!vehicle.brand || vehicle.brand === '') {
-      return {
-        statusCode: 400,
-        error: 'brand does not exist',
-      };
-    }
+    const requiredProperties = ['brand', 'model', 'year'];
 
-    if (!vehicle.model || vehicle.model === '') {
-      return {
-        statusCode: 400,
-        error: 'model does not exist',
-      };
-    }
-
-    if (!vehicle.year || vehicle.year < 1000) {
-      return {
-        statusCode: 400,
-        error: 'year does not exist',
-      };
+    for (let property of requiredProperties) {
+      if (!this.vehicle.body[property] || this.vehicle.body[property] === '') {
+        return {
+          statusCode: 400,
+          error: new Error(`${property} is invalid`),
+        };
+      }
     }
 
     return {

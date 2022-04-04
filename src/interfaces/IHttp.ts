@@ -5,5 +5,5 @@ export interface IHttpRequest {
 export interface IHttpResponse {
   statusCode: number;
   body?: any;
-  error?: string;
+  error?: Error;
 }
