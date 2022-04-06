@@ -41,4 +41,13 @@ describe('URL parser', () => {
     expect(parsedURL.host).toBe('localhost:3000');
     expect(parsedURL.query).toEqual(expectedResponse);
   });
+
+  it('Invalid URL', () => {
+    function expectedError(): void {
+      parseUrl.parseUrl('SomeInvalidUrl');
+    }
+    expect(expectedError).toThrowError(
+      new Error(`Error in URL SomeInvalidUrl`),
+    );
+  });
 });
