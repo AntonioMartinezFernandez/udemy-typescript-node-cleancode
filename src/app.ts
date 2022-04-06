@@ -11,8 +11,8 @@ app.get('/', (req: Express.Request, res: Express.Response) => {
   console.log(res.send('Hello Express!'));
 });
 
+export default app;
+
 app.listen(3000, () => {
   console.log('Server listen on port 3000');
 });
-
-export default app;
