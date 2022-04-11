@@ -23,4 +23,8 @@ export class Food {
     };
     return response;
   }
+
+  getFood(food: IFood = this.food.body) {
+    return food;
+  }
 }

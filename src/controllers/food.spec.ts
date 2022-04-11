@@ -18,4 +18,12 @@ describe('Food', () => {
 
     expect(response.body.description).toEqual('Healthy food');
   });
+
+  it('Return Food', () => {
+    const foodProperties = {
+      body: { name: 'Banana', description: 'Healthy Food', price: 2 },
+    };
+    const food = new Food(foodProperties);
+    expect(food.getFood()).toEqual(foodProperties.body);
+  });
 });
