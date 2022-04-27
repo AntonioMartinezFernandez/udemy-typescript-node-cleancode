@@ -1,5 +1,5 @@
 import { MissingFormalParameter } from '../errors/MissingFormalParameter';
-import { IHttpRequest, IHttpResponse } from '@/interfaces/IHttp';
+import { IHttpRequest, IHttpResponse } from '../interfaces/IHttp';
 import { TVehicle } from '../entities/Vehicle';
 
 export class RegisterVehicle {
