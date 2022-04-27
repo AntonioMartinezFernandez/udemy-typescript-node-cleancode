@@ -22,9 +22,9 @@ describe('Contract Class', () => {
     const premiumContract = new PremiumContractModel({
       id: '#001',
       initDate: new Date(2022, 0, 1, 1, 0, 0),
-      expirationDate: new Date(2023, 0, 1, 1, 0, 0),
+      expirationDate: new Date(2024, 0, 1, 1, 0, 0),
       months: 24,
-      monthlyCost: 500,
+      monthlyCost: 480,
       discountPercent: 10,
     });
 
@@ -33,10 +33,10 @@ describe('Contract Class', () => {
       new Date(2022, 0, 1, 1, 0, 0),
     );
     expect(premiumContract.getExpirationDate()).toEqual(
-      new Date(2023, 0, 1, 1, 0, 0),
+      new Date(2024, 0, 1, 1, 0, 0),
     );
     expect(premiumContract.getDuration()).toBe(24);
-    expect(premiumContract.getMonthlyCost()).toBe(500);
-    expect(premiumContract.getMonthlyDiscount()).toBe(50);
+    expect(premiumContract.getMonthlyCost()).toBe(480);
+    expect(premiumContract.getMonthlyDiscount()).toBe(48);
   });
 });
