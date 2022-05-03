@@ -6,7 +6,7 @@ export class RegisterVehicle {
   constructor(private readonly vehicle: IHttpRequest) {}
 
   handler(vehicle: TVehicle = this.vehicle.body): IHttpResponse {
-    const requiredProperties = ['brand', 'model', 'year'];
+    const requiredProperties = ['brand', 'model', 'year', 'color'];
 
     for (let property of requiredProperties) {
       if (!this.vehicle.body[property] || this.vehicle.body[property] === '') {
@@ -23,6 +23,7 @@ export class RegisterVehicle {
         brand: vehicle.brand,
         model: vehicle.model,
         year: vehicle.year,
+        color: vehicle.color,
       },
     };
   }

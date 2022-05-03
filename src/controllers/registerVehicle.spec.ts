@@ -3,7 +3,9 @@ import { RegisterVehicle } from './RegisterVehicle';
 
 describe('RegisterVehicle Class', () => {
   it('if the brand does not exist return 400', () => {
-    const httpRequest = { body: { brand: '', model: 'TT', year: 2011 } };
+    const httpRequest = {
+      body: { brand: '', model: 'TT', year: 2011, color: 'black' },
+    };
     const sut = new RegisterVehicle(httpRequest);
 
     expect(sut.handler().statusCode).toEqual(400);
@@ -11,7 +13,9 @@ describe('RegisterVehicle Class', () => {
   });
 
   it('if the model does not exist return 400', () => {
-    const httpRequest = { body: { brand: 'Audi', model: '', year: 2011 } };
+    const httpRequest = {
+      body: { brand: 'Audi', model: '', year: 2011, color: 'black' },
+    };
     const sut = new RegisterVehicle(httpRequest);
 
     expect(sut.handler().statusCode).toEqual(400);
@@ -19,15 +23,29 @@ describe('RegisterVehicle Class', () => {
   });
 
   it('if the year does not exist return 400', () => {
-    const httpRequest = { body: { brand: 'Audi', model: 'TT', year: null } };
+    const httpRequest = {
+      body: { brand: 'Audi', model: 'TT', year: null, color: 'black' },
+    };
     const sut = new RegisterVehicle(httpRequest);
 
     expect(sut.handler().statusCode).toEqual(400);
     expect(sut.handler().error).toEqual(new MissingFormalParameter('year'));
   });
 
+  it('if the color does not exist return 400', () => {
+    const httpRequest = {
+      body: { brand: 'Audi', model: 'TT', year: 2011, color: '' },
+    };
+    const sut = new RegisterVehicle(httpRequest);
+
+    expect(sut.handler().statusCode).toEqual(400);
+    expect(sut.handler().error).toEqual(new MissingFormalParameter('color'));
+  });
+
   it('if the brand and model exist return 200, brand, model and year', () => {
-    const httpRequest = { body: { brand: 'Audi', model: 'TT', year: 2011 } };
+    const httpRequest = {
+      body: { brand: 'Audi', model: 'TT', year: 2011, color: 'black' },
+    };
     const sut = new RegisterVehicle(httpRequest);
     const handler = sut.handler();
 
@@ -35,5 +53,6 @@ describe('RegisterVehicle Class', () => {
     expect(handler.body.brand).toEqual('Audi');
     expect(handler.body.model).toEqual('TT');
     expect(handler.body.year).toEqual(2011);
+    expect(handler.body.color).toEqual('black');
   });
 });
