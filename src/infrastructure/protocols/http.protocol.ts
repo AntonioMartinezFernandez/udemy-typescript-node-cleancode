@@ -1,4 +1,4 @@
-import { InvalidUrl } from '../errors/InvalidUrl';
+import { InvalidUrl } from '../../domain/errors/InvalidUrl';
 import { parse, UrlWithParsedQuery } from 'url';
 
 export class parseUrl {

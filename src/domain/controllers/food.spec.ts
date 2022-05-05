@@ -1,4 +1,4 @@
-import { IHttpRequest, IHttpResponse } from '@/interfaces/IHttp';
+import { IHttpRequest, IHttpResponse } from '@/domain/interfaces/IHttp';
 import { Food } from './Food';
 
 describe('Food', () => {

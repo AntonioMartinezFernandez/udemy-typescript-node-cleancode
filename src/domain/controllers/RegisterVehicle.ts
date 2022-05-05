@@ -8,7 +8,7 @@ export class RegisterVehicle {
   handler(vehicle: TVehicle = this.vehicle.body): IHttpResponse {
     const requiredProperties = ['brand', 'model', 'year', 'color'];
 
-    for (let property of requiredProperties) {
+    for (const property of requiredProperties) {
       if (!this.vehicle.body[property] || this.vehicle.body[property] === '') {
         return {
           statusCode: 400,
