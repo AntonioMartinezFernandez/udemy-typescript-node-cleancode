@@ -12,7 +12,7 @@ export default class Fibonacci {
   };
 
   private sumFibonacci = (n: number): number => {
-    let result: number = 0;
+    let result = 0;
     for (let i = 0; i < n + 1; i++) {
       result = result + this.calcFibonacci(i);
     }
