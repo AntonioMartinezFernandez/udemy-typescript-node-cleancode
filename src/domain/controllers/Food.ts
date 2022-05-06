@@ -1,5 +1,5 @@
-import IFood from '@/domain/entities/Food';
-import { IHttpRequest, IHttpResponse } from '@/domain/interfaces/IHttp';
+import IFood from '../../domain/interfaces/IFood';
+import { IHttpRequest, IHttpResponse } from '../../domain/interfaces/IHttp';
 
 export class Food {
   constructor(private readonly food: IHttpRequest) {}

@@ -1,30 +1,34 @@
-import { MissingFormalParameter } from '../errors/MissingFormalParameter';
+import IController from '../interfaces/IController';
 import { IHttpRequest, IHttpResponse } from '../interfaces/IHttp';
-import { TVehicle } from '../entities/Vehicle';
+import { MissingFormalParameter } from '../errors/MissingFormalParameter';
+import { serverError, success } from '../helpers/httpHelpers';
+import AddVehicle from '../useCases/addVehicle';
 
-export class RegisterVehicle {
-  constructor(private readonly vehicle: IHttpRequest) {}
+export class RegisterVehicle implements IController {
+  constructor(private readonly addVehicle: AddVehicle) {
+    this.addVehicle = addVehicle;
+  }
 
-  handler(vehicle: TVehicle = this.vehicle.body): IHttpResponse {
-    const requiredProperties = ['brand', 'model', 'year', 'color'];
+  async handler(httpRequest: IHttpRequest): Promise<IHttpResponse> {
+    try {
+      const requiredProperties = ['brand', 'model', 'year', 'color'];
 
-    for (const property of requiredProperties) {
-      if (!this.vehicle.body[property] || this.vehicle.body[property] === '') {
-        return {
-          statusCode: 400,
-          error: new MissingFormalParameter(`${property}`),
-        };
+      for (const property of requiredProperties) {
+        if (!httpRequest.body[property] || httpRequest.body[property] === '') {
+          return {
+            statusCode: 400,
+            error: new MissingFormalParameter(`${property}`),
+          };
+        }
       }
-    }
 
-    return {
-      statusCode: 200,
-      body: {
-        brand: vehicle.brand,
-        model: vehicle.model,
-        year: vehicle.year,
-        color: vehicle.color,
-      },
-    };
+      const { brand, model, year, color } = httpRequest.body;
+
+      const vehicle = await this.addVehicle.add({ brand, model, year, color });
+
+      return success(vehicle);
+    } catch (error) {
+      return serverError(error);
+    }
   }
 }
