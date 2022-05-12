@@ -22,9 +22,15 @@ export class RegisterVehicle implements IController {
         }
       }
 
-      const { brand, model, year, color } = httpRequest.body;
+      const { brand, model, year, color, email } = httpRequest.body;
 
-      const vehicle = await this.addVehicle.add({ brand, model, year, color });
+      const vehicle = await this.addVehicle.add({
+        brand,
+        model,
+        year,
+        color,
+        email,
+      });
 
       return success(vehicle);
     } catch (error) {

@@ -5,6 +5,7 @@ import vehicleService from '../../../../infrastructure/services/vehicleService';
 export default class mongodbAddVehicle implements AddVehicle {
   async add(vehicle: IVehicle): Promise<IVehicle> {
     vehicleService.create(vehicle);
+    vehicleService.sendmail(vehicle);
     return vehicle;
   }
 }

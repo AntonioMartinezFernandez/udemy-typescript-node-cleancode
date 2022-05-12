@@ -3,4 +3,5 @@ export default interface IVehicle {
   model: string;
   year: number;
   color: string;
+  email?: string;
 }
